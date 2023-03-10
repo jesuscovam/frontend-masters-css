@@ -37,6 +37,7 @@ body {
   border: 2px solid var(--color);
   border-radius: 0.25rem;
   outline: none;
+  transition: border-color  0.4s 0s ease-in-out;
 }
 
 .ui-button {
@@ -48,6 +49,18 @@ body {
   border-radius: 0.25rem;
   height: var(--input-height);
   background-color: var(--color);
+  transition-property: background-color, opacity, transform;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.1)
+  }
+  
+  &:active {
+    transform: translateY(10%);
+  }
 }
 
 [data-show]:not([data-active]) {

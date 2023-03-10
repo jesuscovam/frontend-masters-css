@@ -33,19 +33,30 @@ body {
   &:focus-within {
     --color: var(--color-blue);
   }
+  animation: 
+    slide-up var(--animation-duration) var(--transition-easing),
+    shake var(--animation-duration) var(--total-duration);
 
-  animation: slide-up var(--animation-duration) var(--transition-easing);
+  --input-duration:  calc(var(--animation-duration) / 2);
+  --button-duration: var(--animation-duration);
+  --total-duration: calc(var(--animation-duration) + var(--input-duration) + var(--button-duration));
 
   > .ui-input,
   > .ui-button {
-    // Add animations here
+    animation-name: slide-up;
+    animation-duration: var(--animation-duration);
+    animation-timing-function: inherit;
+    animation-fill-mode: both;
+
   }
 
   > .ui-input {
-    // ...
+    animation-duration: var(--input-duration);
+    animation-delay: var(--animation-duration);
   }
   > .ui-button {
-    // ...
+    animation-delay: calc(var(--animation-duration) + var(--input-duration));
+  
   }
 }
 
@@ -84,6 +95,30 @@ body {
     opacity: 0;
     transform: translateY(100%);
   }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes move-left {
+  from {
+    opacity: 0;
+    transform: translateX(100vw);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes move-right {
+  from {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+
   to {
     opacity: 1;
     transform: none;

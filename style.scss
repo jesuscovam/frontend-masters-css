@@ -1,9 +1,17 @@
 @import './styles/base.scss';
 
+:root {
+  --primary-color: white;
+  --fg-color: blue;
+  --duration: 1s;
+  --easing: cubic-bezier(.5,0,.5,1);
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   padding: 5vmin;
-  background-color: #f4f4f4;
+  background-color: var(--primary-color);
+  color: var(--fg-color, white)
 }
 
 a {
@@ -12,6 +20,7 @@ a {
 
 h1 {
   margin: 0;
+  color: var(--fg-color);
 }
 
 small {
@@ -26,6 +35,25 @@ ul {
 .ball {
   height: 5vmin;
   width: 5vmin;
+  left: 50vw;
   border-radius: 50%;
-  background: radial-gradient(circle at bottom right, #fb2324, #fe932a);
+  background: tomato;
+  --duration: 1s;
+  --stagger: 0.5s;
+  --intervalo: calc(var(--duration) - var(--stagger));
+  animation: move-right var(--duration) calc(var(--intervalo)* var(--i)) both;
+
+
 }
+
+@keyframes move-right {
+  
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translateX(25vw);
+  }
+}
+
